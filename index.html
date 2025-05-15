@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan Tiket TGV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+        input, select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+        .seat-description {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Tiket TGV</h1>
+        <form id="bookingForm">
+            <label for="location">Lokasi TGV:</label>
+            <select id="location" name="location" required>
+                <option value="Central I-City">Central I-City</option>
+                <option value="Pavilion Bukit Jalil">Pavilion Bukit Jalil</option>
+                <option value="Seremban 2">Seremban 2</option>
+                <option value="Setiawalk Puchong">Setiawalk Puchong</option>
+                <option value="Sunway Putra">Sunway Putra</option>
+                <option value="Sunway Pyramid">Sunway Pyramid</option>
+                <option value="Wangsa Walk">Wangsa Walk</option>
+                <option value="1 Utama">1 Utama</option>
+                <option value="1 Shamelin">1 Shamelin</option>
+                <option value="Ampang Point">Ampang Point</option>
+                <option value="AU2 Setiawangsa">AU2 Setiawangsa</option>
+                <option value="Bukit Raja">Bukit Raja</option>
+                <option value="Bukit Tinggi">Bukit Tinggi</option>
+                <option value="Cheras Selatan">Cheras Selatan</option>
+                <option value="Cheras Sentral">Cheras Sentral</option>
+                <option value="DPulze Putrajaya">DPulze Putrajaya</option>
+                <option value="Strand Kota Damansara">Strand Kota Damansara</option>
+                <option value="Jaya Seksyen 14">Jaya Seksyen 14</option>
+                <option value="Kepong">Kepong</option>
+                <option value="Mines">Mines</option>
+                <option value="Rawang">Rawang</option>
+                <option value="Suria KLCC">Suria KLCC</option>
+                <option value="Bukit Indah">Bukit Indah</option>
+                <option value="KulaiJaya">KulaiJaya</option>
+                <option value="Tasek Central">Tasek Central</option>
+                <option value="Tebrau City">Tebrau City</option>
+                <option value="Toppen">Toppen</option>
+                <option value="Kinta City">Kinta City</option>
+                <option value="Klebang Ipoh">Klebang Ipoh</option>
+                <option value="Seri Manjung">Seri Manjung</option>
+                <option value="Station 18 Ipoh">Station 18 Ipoh</option>
+                <option value="Taiping">Taiping</option>
+                <option value="1st Avenue Penang">1st Avenue Penang</option>
+                <option value="Bukit Mertajam">Bukit Mertajam</option>
+                <option value="Gurney Paragon">Gurney Paragon</option>
+                <option value="Boulevard Bintulu">Boulevard Bintulu</option>
+                <option value="Miri">Miri</option>
+                <option value="Vivacity Kuching">Vivacity Kuching</option>
+                <option value="Mesra Mall">Mesra Mall</option>
+            </select>
+
+            <label for="movie">Nama Movie:</label>
+            <select id="movie" name="movie" required>
+                <option value="Final Destination: Bloodlines">Final Destination: Bloodlines</option>
+                <option value="Thunderbolts">Thunderbolts</option>
+                <option value="Gayong">Gayong</option>
+                <option value="Blood Brother: Bara Naga">Blood Brother: Bara Naga</option>
+                <option value="A Gilded Game">A Gilded Game</option>
+                <option value="Mission Impossible - The Final Reckoning">Mission Impossible - The Final Reckoning</option>
+                <option value="Lilo & Stitch">Lilo & Stitch</option>
+                <option value="Vital Sign">Vital Sign</option>
+                <option value="Telaga Suram">Telaga Suram</option>
+                <option value="Until Dawn">Until Dawn</option>
+                <option value="Holy Night: Demon Hunters">Holy Night: Demon Hunters</option>
+                <option value="Rider (Thai)">Rider (Thai)</option>
+                <option value="A Minecraft Movie">A Minecraft Movie</option>
+                <option value="Sah! Katanya...">Sah! Katanya...</option>
+                <option value="Tourist Family (Tamil)">Tourist Family (Tamil)</option>
+                <option value="Pembantaian Dukun Santet">Pembantaian Dukun Santet</option>
+                <option value="Sutta Thale Enakku (Tamil)">Sutta Thale Enakku (Tamil)</option>
+                <option value="Retro (Tamil)">Retro (Tamil)</option>
+                <option value="The Dumpling Queen">The Dumpling Queen 水饺皇后</option>
+                <option value="Maaman (Tamil)">Maaman (Tamil)</option>
+                <option value="Thudarum (Malayalam)">Thudarum (Malayalam)</option>
+                <option value="Mumu 不说话的爱">Mumu 不说话的爱</option>
+                <option value="Sinners">Sinners</option>
+                <option value="Devil's Double: Next Level (Tamil)">Devil's Double: Next Level (Tamil)</option>
+                <option value="Almarhum">Almarhum</option>
+                <option value="Lovesick 有病才會喜歡你">Lovesick 有病才會喜歡你</option>
+                <option value="Howl's Moving Castle (Re-run)">Howl's Moving Castle 霍尔的移动城堡</option>
+                <option value="Guru Nanak Jahaz (Punjabi)">Guru Nanak Jahaz (Punjabi)</option>
+            </select>
+
+            <label for="seat">Seat Number (Contoh K2, K3, dll.):</label>
+            <input type="text" id="seat" name="seat" required placeholder="Masukkan Seat Number" />
+            <p class="seat-description">Masukkan seat number dalam format baris, contoh: K2, K3, K4</p>
+
+            <label for="date">Tarikh dan Masa:</label>
+            <input type="datetime-local" id="date" name="date" required />
+
+            <label for="totalPrice">Total Harga (RM):</label>
+            <input type="text" id="totalPrice" name="totalPrice" disabled placeholder="Total Harga" />
+
+            <button type="submit">Hantar ke WhatsApp</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        function calculateTotalPrice() {
+            var seatCount = document.getElementById("seat").value.split(',').length; // Counting seats from input
+            var seatPrice = 9; // Harga per seat RM9
+            var processingFee = 0;
+
+            // Calculate processing fee based on seat count
+            if (seatCount >= 1 && seatCount <= 2) {
+                processingFee = 1;
+            } else if (seatCount == 3) {
+                processingFee = 1.5;
+            } else if (seatCount == 4) {
+                processingFee = 2;
+            } else if (seatCount == 5) {
+                processingFee = 2.5;
+            } else if (seatCount == 6) {
+                processingFee = 3;
+            } else if (seatCount == 7) {
+                processingFee = 3.5;
+            } else if (seatCount == 8) {
+                processingFee = 4;
+            } else if (seatCount == 9) {
+                processingFee = 4.5;
+            } else if (seatCount == 10) {
+                processingFee = 5;
+            }
+
+            var totalPrice = (seatPrice * seatCount) + processingFee;
+            document.getElementById("totalPrice").value = totalPrice.toFixed(2);
+        }
+
+        document.getElementById("seat").addEventListener("input", calculateTotalPrice);
+
+        document.getElementById("bookingForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            var location = document.getElementById("location").value;
+            var movie = document.getElementById("movie").value;
+            var date = document.getElementById("date").value;
+            var seat = document.getElementById("seat").value;
+            var totalPrice = document.getElementById("totalPrice").value;
+
+            var message = `Booking Tiket TGV:\nLokasi: ${location}\nFilm: ${movie}\nTarikh dan Masa: ${date}\nSeat: ${seat}\nTotal Harga: RM${totalPrice}`;
+
+            var whatsappURL = `https://wa.me/60178046791?text=${encodeURIComponent(message)}`;
+
+            window.location.href = whatsappURL;
+        });
+    </script>
+</body>
+</html>
