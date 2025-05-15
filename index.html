@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pemesanan Tiket TGV</title>
+    <title>Tempahan Tiket TGV</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,7 +64,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Booking Tiket TGV</h1>
+        <h1>Tempahan Tiket TGV</h1>
         <form id="bookingForm">
             <label for="location">Lokasi TGV:</label>
             <select id="location" name="location" required>
@@ -158,6 +158,19 @@
     </div>
 
     <script>
+        const totalSeatsAvailable = 50; // Set your total seat availability here
+
+        function updateAvailableSeats() {
+            let seatCount = document.getElementById("seat").value.split(',').length; // Counting seats from input
+            let seatsLeft = totalSeatsAvailable - seatCount;
+
+            if (seatsLeft < 0) {
+                seatsLeft = 0;
+            }
+
+            document.getElementById("message").innerHTML = `${seatsLeft} seats left.`;
+        }
+
         function calculateTotalPrice() {
             var seatCount = document.getElementById("seat").value.split(',').length; // Counting seats from input
             var seatPrice = 9; // Harga per seat RM9
@@ -188,18 +201,21 @@
             document.getElementById("totalPrice").value = totalPrice.toFixed(2);
         }
 
-        document.getElementById("seat").addEventListener("input", calculateTotalPrice);
+        document.getElementById("seat").addEventListener("input", function() {
+            calculateTotalPrice();
+            updateAvailableSeats();
+        });
 
         document.getElementById("bookingForm").addEventListener("submit", function(e) {
             e.preventDefault();
-            
+
             var location = document.getElementById("location").value;
             var movie = document.getElementById("movie").value;
             var date = document.getElementById("date").value;
             var seat = document.getElementById("seat").value;
             var totalPrice = document.getElementById("totalPrice").value;
 
-            var message = `Booking Tiket TGV:\nLokasi: ${location}\nFilm: ${movie}\nTarikh dan Masa: ${date}\nSeat: ${seat}\nTotal Harga: RM${totalPrice}`;
+            var message = `Tempahan Tiket TGV:\nLokasi: ${location}\nFilm: ${movie}\nTarikh dan Masa: ${date}\nSeat: ${seat}\nTotal Harga: RM${totalPrice}`;
 
             var whatsappURL = `https://wa.me/60178046791?text=${encodeURIComponent(message)}`;
 
