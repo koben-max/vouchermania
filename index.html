@@ -146,7 +146,7 @@
                         <option value="Bukit Mertajam">Bukit Mertajam</option>
                         <option value="Gurney Paragon">Gurney Paragon</option>
                         <option value="Boulevard Bintulu">Boulevard Bintulu</option>
-                        <option value="Miri">Miri</</option>
+                        <option value="Miri">Miri</option>
                         <option value="Vivacity Kuching">Vivacity Kuching</option>
                         <option value="Mesra Mall">Mesra Mall</option>
                     </select>
@@ -186,14 +186,14 @@
                         <option value="HURRY UP TOMORROW">HURRY UP TOMORROW</option>
                     </select>
 
-                    <label for="seat">Seat Number (Example K2, K3, etc.):</label>
+                    <label for="seat">Seat Number (Example K3,K4):</label>
                     <input type="text" id="seat" name="seat" required placeholder="Enter Seat Number" />
-                    <p class="seat-description">Enter seat numbers in row format, example: K2, K3, K4</p>
+                    <p class="seat-description">Enter seat numbers in row format, example: K3,K4</p>
 
                     <label for="seatType">Seat Type:</label>
                     <select id="seatType" name="seatType" required>
                         <option value="regular">Regular Seat (RM9 each)</option>
-                        <option value="couple">Couple Seat (RM25)</option>
+                        <option value="couple">Couple Seat (RM25 per pair)</option>
                     </select>
 
                     <label for="date">Date and Time:</label>
@@ -221,12 +221,17 @@
 
     <script>
         function calculateTotalPrice() {
-            var seatCount = document.getElementById("seat").value.split(',').length;
+            var seatInput = document.getElementById("seat").value;
+            var seatCount = seatInput.split(',').length;
             var seatType = document.getElementById("seatType").value;
-            var seatPrice = seatType === "couple" ? 25 : 9;
+            var totalPrice = 0;
             var processingFee = 0;
 
-            if (seatType !== "couple") {
+            if (seatType === "couple") {
+                totalPrice = Math.floor(seatCount / 2) * 25;
+                processingFee = 0;
+            } else { // Regular seats
+                totalPrice = seatCount * 9;
                 if (seatCount >= 1 && seatCount <= 2) {
                     processingFee = 1;
                 } else if (seatCount == 3) {
@@ -248,7 +253,7 @@
                 }
             }
 
-            var totalPrice = (seatPrice * seatCount) + processingFee;
+            totalPrice += processingFee;
             document.getElementById("totalPrice").value = totalPrice.toFixed(2);
             document.getElementById("feeDescription").textContent = `Processing Fee: RM${processingFee.toFixed(2)}`;
         }
