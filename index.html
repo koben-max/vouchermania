@@ -60,6 +60,10 @@
             font-size: 12px;
             color: #666;
         }
+        .fee-description {
+            font-size: 12px;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -160,6 +164,8 @@
             <label for="totalPrice">Total Harga (RM):</label>
             <input type="text" id="totalPrice" name="totalPrice" disabled placeholder="Total Harga" />
 
+            <div class="fee-description" id="feeDescription"></div>
+
             <button type="submit">Hantar ke WhatsApp</button>
         </form>
         <div class="message" id="message"></div>
@@ -170,31 +176,32 @@
             var seatCount = document.getElementById("seat").value.split(',').length; // Counting seats from input
             var seatType = document.getElementById("seatType").value;
             var seatPrice = seatType === "couple" ? 25 : 9; // RM25 for couple seats, RM9 for regular seats
-            var processingFee = 0;
+            var processingFee = seatType === "couple" ? 0 : 1; // No processing fee for couple seats
 
             // Calculate processing fee based on seat count
             if (seatCount >= 1 && seatCount <= 2) {
-                processingFee = 1;
+                processingFee = seatType === "couple" ? 0 : 1;
             } else if (seatCount == 3) {
-                processingFee = 1.5;
+                processingFee = seatType === "couple" ? 0 : 1.5;
             } else if (seatCount == 4) {
-                processingFee = 2;
+                processingFee = seatType === "couple" ? 0 : 2;
             } else if (seatCount == 5) {
-                processingFee = 2.5;
+                processingFee = seatType === "couple" ? 0 : 2.5;
             } else if (seatCount == 6) {
-                processingFee = 3;
+                processingFee = seatType === "couple" ? 0 : 3;
             } else if (seatCount == 7) {
-                processingFee = 3.5;
+                processingFee = seatType === "couple" ? 0 : 3.5;
             } else if (seatCount == 8) {
-                processingFee = 4;
+                processingFee = seatType === "couple" ? 0 : 4;
             } else if (seatCount == 9) {
-                processingFee = 4.5;
+                processingFee = seatType === "couple" ? 0 : 4.5;
             } else if (seatCount == 10) {
-                processingFee = 5;
+                processingFee = seatType === "couple" ? 0 : 5;
             }
 
             var totalPrice = (seatPrice * seatCount) + processingFee;
             document.getElementById("totalPrice").value = totalPrice.toFixed(2);
+            document.getElementById("feeDescription").textContent = `Processing Fee: RM${processingFee.toFixed(2)}`;
         }
 
         document.getElementById("seat").addEventListener("input", calculateTotalPrice);
